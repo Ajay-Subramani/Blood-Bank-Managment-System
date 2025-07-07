@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">
+        <i class="fas fa-user-shield me-3"></i>Admin Dashboard
+    </h1>
+    <p class="hero-subtitle">Manage blood bank operations and monitor system activities</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="list-group">
+            <a href="{{ url_for('requests_admin') }}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-list-alt text-primary me-3" style="font-size: 1.5rem;"></i>
+                        <strong>Blood Requests</strong>
+                    </div>
+                    <i class="fas fa-arrow-right text-muted"></i>
+                </div>
+                <p class="mb-1 text-muted">View and manage blood requests from users</p>
+            </a>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="list-group">
+            <a href="{{ url_for('donor_list') }}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-users text-success me-3" style="font-size: 1.5rem;"></i>
+                        <strong>Donor List</strong>
+                    </div>
+                    <i class="fas fa-arrow-right text-muted"></i>
+                </div>
+                <p class="mb-1 text-muted">View all registered blood donors</p>
+            </a>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="list-group">
+            <a href="{{ url_for('donate_log') }}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-clipboard-list text-danger me-3" style="font-size: 1.5rem;"></i>
+                        <strong>Donation Log</strong>
+                    </div>
+                    <i class="fas fa-arrow-right text-muted"></i>
+                </div>
+                <p class="mb-1 text-muted">Log donations and view blood stock balance</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body p-4">
+                <h5 class="card-title">
+                    <i class="fas fa-info-circle me-2"></i>Admin Instructions
+                </h5>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-eye text-primary" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                            <h6>Monitor Requests</h6>
+                            <p class="text-muted small">Check pending blood requests and accept them if blood is available</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-plus-circle text-success" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                            <h6>Log Donations</h6>
+                            <p class="text-muted small">Record new blood donations and update stock levels</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="text-center">
+                            <i class="fas fa-chart-bar text-warning" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                            <h6>Track Inventory</h6>
+                            <p class="text-muted small">Monitor blood stock levels by blood group</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

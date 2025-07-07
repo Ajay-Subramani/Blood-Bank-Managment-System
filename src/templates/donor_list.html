@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>
+        <i class="fas fa-users me-2"></i>Registered Donors
+    </h2>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+    </a>
+</div>
+
+{% if donors %}
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-table me-2"></i>All Registered Donors
+        <span class="badge bg-success ms-2">{{ donors|length }} Total</span>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Donor Name</th>
+                        <th>Age</th>
+                        <th>Blood Group</th>
+                        <th>Contact Email</th>
+                        <th>Registration Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for donor in donors %}
+                    <tr>
+                        <td><strong>#{{ donor.id }}</strong></td>
+                        <td>
+                            <i class="fas fa-user me-2"></i>{{ donor.name }}
+                        </td>
+                        <td>
+                            <span class="badge bg-info">{{ donor.age }} years</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-danger">{{ donor.blood_group }}</span>
+                        </td>
+                        <td>
+                            <i class="fas fa-envelope me-1"></i>
+                            <a href="mailto:{{ donor.email }}" class="text-decoration-none">{{ donor.email }}</a>
+                        </td>
+                        <td>
+                            <small>{{ donor.registered_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                        </td>
+                        <td>
+                            <span class="badge bg-success">
+                                <i class="fas fa-check-circle me-1"></i>Active
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    {% set blood_groups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'] %}
+    {% for group in blood_groups %}
+    <div class="col-md-3 mb-3">
+        <div class="stats-card">
+            <i class="fas fa-tint text-danger" style="font-size: 2rem; margin-bottom: 10px;"></i>
+            <div class="stats-number">{{ donors|selectattr('blood_group', 'equalto', group)|list|length }}</div>
+            <div class="stats-label">{{ group }} Donors</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<div class="card">
+    <div class="card-body text-center py-5">
+        <i class="fas fa-users text-muted" style="font-size: 4rem; margin-bottom: 20px;"></i>
+        <h4 class="text-muted">No Donors Registered</h4>
+        <p class="text-muted">There are currently no registered donors in the system.</p>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-primary">
+            <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+        </a>
+    </div>
+</div>
+{% endif %}
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h6 class="card-title">
+            <i class="fas fa-info-circle me-2"></i>Donor Management Tips
+        </h6>
+        <div class="row">
+            <div class="col-md-3 text-center mb-3">
+                <i class="fas fa-phone text-primary" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <h6>Contact Donors</h6>
+                <p class="text-muted small">Use email addresses to reach out when blood is needed</p>
+            </div>
+            <div class="col-md-3 text-center mb-3">
+                <i class="fas fa-calendar text-warning" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <h6>Schedule Donations</h6>
+                <p class="text-muted small">Coordinate donation appointments with available donors</p>
+            </div>
+            <div class="col-md-3 text-center mb-3">
+                <i class="fas fa-heart text-danger" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <h6>Maintain Records</h6>
+                <p class="text-muted small">Keep track of donor health and donation history</p>
+            </div>
+            <div class="col-md-3 text-center mb-3">
+                <i class="fas fa-award text-success" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <h6>Appreciate Donors</h6>
+                <p class="text-muted small">Recognize and thank donors for their contributions</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

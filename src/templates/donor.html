@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header text-center">
+                <i class="fas fa-heart me-2"></i>Donor Registration Form
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-success">
+                    <i class="fas fa-heart me-2"></i>
+                    <strong>Thank you for choosing to save lives!</strong> Your registration helps us maintain a database of available donors.
+                </div>
+                
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">
+                                <i class="fas fa-user me-2"></i>Full Name
+                            </label>
+                            <input type="text" class="form-control" id="name" name="name" required 
+                                   placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="age" class="form-label">
+                                <i class="fas fa-calendar me-2"></i>Age
+                            </label>
+                            <input type="number" class="form-control" id="age" name="age" 
+                                   min="18" max="65" required placeholder="Enter your age (18-65)">
+                            <div class="form-text">Donors must be between 18-65 years old</div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="blood_group" class="form-label">
+                                <i class="fas fa-tint me-2"></i>Blood Group
+                            </label>
+                            <select class="form-control" id="blood_group" name="blood_group" required>
+                                <option value="">Select Your Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">
+                                <i class="fas fa-envelope me-2"></i>Contact Email
+                            </label>
+                            <input type="email" class="form-control" id="email" name="email" required 
+                                   placeholder="Enter your email address">
+                            <div class="form-text">We'll use this to contact you when blood is needed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title">
+                                    <i class="fas fa-info-circle me-2"></i>Donor Eligibility Criteria
+                                </h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>Age: 18-65 years</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Weight: Minimum 50kg</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Good general health</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-check text-success me-2"></i>No recent illness</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>No recent travel to malaria areas</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>No recent tattoos/piercings</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-heart me-2"></i>Register as Donor
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-grid">
+                                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <h6 class="card-title">
+                    <i class="fas fa-question-circle me-2"></i>What happens after registration?
+                </h6>
+                <div class="row">
+                    <div class="col-md-4 text-center mb-3">
+                        <i class="fas fa-database text-primary" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <h6>Added to Database</h6>
+                        <p class="text-muted small">Your details are securely stored in our donor database</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <i class="fas fa-bell text-warning" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <h6>Notification</h6>
+                        <p class="text-muted small">We'll contact you when your blood type is needed</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <i class="fas fa-handshake text-success" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <h6>Save Lives</h6>
+                        <p class="text-muted small">Your donation can save up to 3 lives</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

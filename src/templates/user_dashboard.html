@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">
+        <i class="fas fa-user me-3"></i>User Dashboard
+    </h1>
+    <p class="hero-subtitle">Welcome! Here you can request blood or register as a donor</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="list-group">
+            <a href="{{ url_for('contact') }}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-hand-holding-medical text-primary me-3" style="font-size: 2rem;"></i>
+                        <strong>Request Blood</strong>
+                    </div>
+                    <i class="fas fa-arrow-right text-muted"></i>
+                </div>
+                <p class="mb-1 text-muted">Submit a blood request with your requirements</p>
+                <small class="text-muted">Fill out the contact form with your blood type and location details</small>
+            </a>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="list-group">
+            <a href="{{ url_for('donor') }}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-heart text-danger me-3" style="font-size: 2rem;"></i>
+                        <strong>Register as Donor</strong>
+                    </div>
+                    <i class="fas fa-arrow-right text-muted"></i>
+                </div>
+                <p class="mb-1 text-muted">Join our community of life-savers</p>
+                <small class="text-muted">Register your details to become a blood donor</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body p-4">
+                <h5 class="card-title">
+                    <i class="fas fa-question-circle me-2"></i>What would you like to do?
+                </h5>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <i class="fas fa-ambulance text-primary" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                <h6 class="card-title">Need Blood Urgently?</h6>
+                                <p class="card-text text-muted">Submit a blood request and our admin team will help connect you with available donors.</p>
+                                <a href="{{ url_for('contact') }}" class="btn btn-primary">
+                                    <i class="fas fa-plus me-2"></i>Request Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body text-center">
+                                <i class="fas fa-donate text-danger" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                <h6 class="card-title">Want to Save Lives?</h6>
+                                <p class="card-text text-muted">Register as a blood donor and help save lives in your community.</p>
+                                <a href="{{ url_for('donor') }}" class="btn btn-danger">
+                                    <i class="fas fa-heart me-2"></i>Become Donor
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body p-4">
+                <h5 class="card-title">
+                    <i class="fas fa-info-circle me-2"></i>Important Information
+                </h5>
+                <div class="row">
+                    <div class="col-md-4 text-center mb-3">
+                        <i class="fas fa-clock text-warning" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <h6>Response Time</h6>
+                        <p class="text-muted small">Blood requests are typically processed within 2-4 hours</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <i class="fas fa-shield-alt text-success" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <h6>Safety First</h6>
+                        <p class="text-muted small">All blood donations are screened and tested for safety</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <i class="fas fa-phone text-primary" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <h6>24/7 Support</h6>
+                        <p class="text-muted small">Emergency blood requests are handled round the clock</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
